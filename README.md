@@ -20,4 +20,5 @@ comunidade de leitores da Nook, melhorar a divulgação de suas atividades e pro
 mais eficiente tanto para os clientes quanto para os administradores.
 
 Discentes:
-Yasmin Kauany Amabili de Souza Lucio
+Yasmin Kauany Amabili de Souza Lucio (yasminkauany0707@gmail.com)
+Joel de Araujo Junior (joel.junior@estudante.ifro.edu.br)
