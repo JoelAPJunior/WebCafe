@@ -1,0 +1,31 @@
+<%- include('shared/header',{title:'Catálogo'}) %>
+<section class="page-hero reveal">
+  <span class="eyebrow">Acervo Nook</span>
+  <h1>Catálogo de livros</h1>
+  <p>Busque por título ou autor e reserve o exemplar antes de passar na cafeteria.</p>
+</section>
+<form class="search reveal" method="get" action="/catalogo">
+  <input name="q" value="<%= q %>" placeholder="Digite um título, autor ou palavra-chave">
+  <button class="btn">Buscar</button>
+</form>
+<div class="grid books-grid">
+  <% if(!livros.length){ %>
+    <div class="empty-state reveal"><h2>Nenhum livro encontrado.</h2><p>Tente outro termo de busca.</p></div>
+  <% } %>
+  <% livros.forEach((l, index)=>{ %>
+    <article class="card book-card reveal" style="--delay:<%= index * 50 %>ms">
+      <div class="cover">
+        <img class="book-cover-img <%= l.capa ? 'uploaded-cover' : 'generated-cover' %>" src="<%= bookCover(l) %>" alt="Capa de <%= l.titulo %>">
+      </div>
+      <div class="card-body">
+        <span class="tag <%= l.quantidade < 1 ? 'danger' : '' %>"><%= l.quantidade < 1 ? 'Indisponível' : l.quantidade + ' em estoque' %></span>
+        <h3><%= l.titulo %></h3>
+        <p><%= l.autor %> • <%= l.ano || 'ano não informado' %></p>
+        <form method="post" action="/reservas/<%= l.id %>">
+          <button class="btn full" <%= l.quantidade<1?'disabled':'' %>><%= l.quantidade<1?'Esgotado':'Reservar livro' %></button>
+        </form>
+      </div>
+    </article>
+  <% }) %>
+</div>
+<%- include('shared/footer') %>

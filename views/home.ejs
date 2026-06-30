@@ -1,0 +1,51 @@
+<%- include('shared/header',{title:'Cafeteria e Sebo'}) %>
+<section class="hero reveal">
+  <div class="hero-copy">
+    <span class="eyebrow">Café especial • livros usados • comunidade</span>
+    <h1>Um refúgio quente para quem lê sem pressa.</h1>
+    <p>A Nook junta catálogo online, reservas de livros e eventos literários em uma experiência simples, elegante e com cheiro de café passado na hora.</p>
+    <div class="actions">
+      <a class="btn" href="/catalogo">Explorar catálogo</a>
+      <a class="btn ghost" href="/eventos">Ver agenda</a>
+    </div>
+    <div class="hero-metrics" aria-label="Resumo da Nook">
+      <span><b><%= livros.length %>+</b> destaques</span>
+      <span><b><%= eventos.length %></b> encontros</span>
+      <span><b>24h</b> para reservar</span>
+    </div>
+  </div>
+  <aside class="hero-card tilt">
+    <span class="card-kicker">Próximo evento</span>
+    <h2><%= eventos[0]?.titulo || 'Clube de leitura' %></h2>
+    <p><%= eventos[0]?.descricao || 'Uma conversa aberta para leitores curiosos.' %></p>
+    <div class="event-pill"><%= eventos[0]?.data || 'Em breve' %> • <%= eventos[0]?.local || 'Nook' %></div>
+  </aside>
+</section>
+
+<section class="section-head reveal">
+  <span class="eyebrow">Escolhas da casa</span>
+  <h2>Livros que chamam pelo nome.</h2>
+</section>
+<div class="grid books-grid">
+  <% livros.forEach((l, index)=>{ %>
+    <article class="card book-card reveal" style="--delay:<%= index * 70 %>ms">
+      <div class="cover">
+        <img class="book-cover-img <%= l.capa ? 'uploaded-cover' : 'generated-cover' %>" src="<%= bookCover(l) %>" alt="Capa de <%= l.titulo %>">
+      </div>
+      <div class="card-body">
+        <span class="tag"><%= l.quantidade %> disponível(is)</span>
+        <h3><%= l.titulo %></h3>
+        <p><%= l.autor %> • <%= l.ano %></p>
+      </div>
+    </article>
+  <% }) %>
+</div>
+
+<section class="banner reveal">
+  <div>
+    <span class="eyebrow">feito para circular histórias</span>
+    <h2>Reserve online. Retire na cafeteria. Fique para o café.</h2>
+  </div>
+  <a class="btn" href="/login">Começar agora</a>
+</section>
+<%- include('shared/footer') %>

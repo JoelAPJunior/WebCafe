@@ -1,0 +1,18 @@
+<%- include('../shared/header',{title:'Formulário'}) %>
+<section class="auth reveal">
+  <form class="panel big" method="post" enctype="multipart/form-data" action="<%= action %>">
+    <span class="eyebrow">Administração</span>
+    <h1><%= row.id ? 'Editar' : 'Cadastrar' %> <%= name %></h1>
+    <% fields.forEach(f=>{ %>
+      <label><%= f.label %>
+        <% if(f.type==='textarea'){ %>
+          <textarea name="<%= f.name %>" placeholder="Escreva aqui"><%= row[f.name] || '' %></textarea>
+        <% } else { %>
+          <input name="<%= f.name %>" type="<%= f.type || 'text' %>" value="<%= f.type==='file' ? '' : (row[f.name] || '') %>">
+        <% } %>
+      </label>
+    <% }) %>
+    <div class="actions"><button class="btn">Salvar</button><a class="btn ghost" href="/admin/<%= name %>">Cancelar</a></div>
+  </form>
+</section>
+<%- include('../shared/footer') %>

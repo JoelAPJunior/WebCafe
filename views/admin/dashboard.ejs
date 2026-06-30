@@ -1,0 +1,19 @@
+<%- include('../shared/header',{title:'Admin'}) %>
+<section class="page-hero reveal">
+  <span class="eyebrow">Gestão Nook</span>
+  <h1>Painel administrativo</h1>
+  <p>Controle acervo, agenda, clientes e equipe sem perder a identidade visual da cafeteria.</p>
+</section>
+<div class="stats reveal">
+  <div><b><%= stats.livros %></b><span>Livros</span></div>
+  <div><b><%= stats.eventos %></b><span>Eventos</span></div>
+  <div><b><%= stats.clientes %></b><span>Clientes</span></div>
+  <div><b><%= stats.reservas %></b><span>Reservas</span></div>
+</div>
+<div class="admin-grid reveal">
+  <a href="/admin/livros"><strong>Livros</strong><span>Adicionar, editar e remover obras.</span></a>
+  <a href="/admin/eventos"><strong>Eventos</strong><span>Gerenciar agenda cultural.</span></a>
+  <a href="/admin/clientes"><strong>Clientes</strong><span>Manter cadastro atualizado.</span></a>
+  <a href="/admin/funcionarios"><strong>Funcionários</strong><span>Organizar a equipe.</span></a>
+</div>
+<%- include('../shared/footer') %>

@@ -1,0 +1,21 @@
+<%- include('../shared/header',{title:'Admin '+name}) %>
+<section class="top page-top reveal">
+  <div>
+    <span class="eyebrow">Administração</span>
+    <h1><%= name %></h1>
+  </div>
+  <a class="btn" href="/admin/<%= name %>/novo">Novo registro</a>
+</section>
+<div class="table reveal">
+  <table>
+    <tr><% fields.forEach(f=>{ %><th><%= f.label %></th><% }) %><th>Ações</th></tr>
+    <% if(!rows.length){ %><tr><td colspan="<%= fields.length + 1 %>">Nenhum registro cadastrado.</td></tr><% } %>
+    <% rows.forEach(row=>{ %>
+      <tr>
+        <% fields.forEach(f=>{ %><td><%= f.type==='file' ? (row[f.name]?'Imagem enviada':'-') : row[f.name] %></td><% }) %>
+        <td class="row-actions"><a href="/admin/<%= name %>/<%= row.id %>/editar">Editar</a><form class="inline" method="post" action="/admin/<%= name %>/<%= row.id %>?_method=DELETE"><button>Excluir</button></form></td>
+      </tr>
+    <% }) %>
+  </table>
+</div>
+<%- include('../shared/footer') %>

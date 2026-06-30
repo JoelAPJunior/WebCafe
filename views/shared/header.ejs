@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17110d">
+  <title><%= title %> | Nook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <nav class="nav">
+    <a class="brand" href="/" aria-label="Página inicial da Nook">
+      <span class="brand-mark">N</span>
+      <span>Nook</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="/catalogo">Catálogo</a>
+      <a href="/eventos">Eventos</a>
+      <% if(user){ %>
+        <a href="/minhas-reservas">Reservas</a>
+        <% if(user.role==='admin'){ %><a href="/admin">Admin</a><% } %>
+        <form class="inline" method="post" action="/logout"><button class="text-button">Sair</button></form>
+      <% } else { %>
+        <a class="nav-cta" href="/login">Entrar</a>
+      <% } %>
+    </div>
+  </nav>
+  <main>
+    <% if(flash){ %>
+      <div class="flash <%= flash.type %>" role="status"><%= flash.msg %></div>
+    <% } %>

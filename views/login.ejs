@@ -1,0 +1,12 @@
+<%- include('shared/header',{title:'Entrar'}) %>
+<section class="auth reveal">
+  <form method="post" action="/login" class="panel login-panel">
+    <span class="eyebrow">Área do leitor</span>
+    <h1>Entre na sua conta</h1>
+    <p>Use <strong>admin@nook.com / admin123</strong> ou <strong>cliente@nook.com / cliente123</strong>.</p>
+    <label>E-mail<input required name="email" type="email" autocomplete="email" placeholder="seu@email.com"></label>
+    <label>Senha<input required name="password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+    <button class="btn full">Entrar</button>
+  </form>
+</section>
+<%- include('shared/footer') %>

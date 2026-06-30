@@ -1,0 +1,23 @@
+<%- include('shared/header',{title:'Eventos'}) %>
+<section class="page-hero reveal">
+  <span class="eyebrow">Agenda cultural</span>
+  <h1>Eventos literários</h1>
+  <p>Clubes de leitura, feiras de troca, conversas e encontros para ocupar a cidade com histórias.</p>
+</section>
+<div class="event-list">
+  <% eventos.forEach((e, index)=>{ %>
+    <article class="event-card reveal" style="--delay:<%= index * 70 %>ms">
+      <div class="event-art">
+        <% if(e.banner){ %><img src="/uploads/<%= e.banner %>" alt="Banner de <%= e.titulo %>"><% } else { %><span>☕</span><% } %>
+      </div>
+      <div class="event-info">
+        <span class="tag"><%= e.data %> às <%= e.horario %></span>
+        <h2><%= e.titulo %></h2>
+        <p><%= e.descricao %></p>
+        <small><%= e.local %> • <%= e.vagas %> vagas</small>
+      </div>
+      <form method="post" action="/eventos/<%= e.id %>/participar"><button class="btn">Participar</button></form>
+    </article>
+  <% }) %>
+</div>
+<%- include('shared/footer') %>
