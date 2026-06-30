@@ -1,0 +1,35 @@
+{
+  "name": "nook-app",
+  "version": "1.0.0",
+  "description": "Sistema web para cafeteria e sebo com catálogo, reservas e eventos.",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "build": "tsc",
+    "start": "npm run build && node dist/main.js",
+    "prod": "node dist/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/better-sqlite3": "latest",
+    "@types/express": "latest",
+    "@types/express-session": "latest",
+    "@types/method-override": "latest",
+    "@types/multer": "latest",
+    "@types/node": "latest",
+    "ts-node-dev": "latest",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "bcryptjs": "latest",
+    "better-sqlite3": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "express-session": "latest",
+    "method-override": "latest",
+    "multer": "latest"
+  }
+}
